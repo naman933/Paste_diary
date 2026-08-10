@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { PageSlot } from '../data/pages';
 import { childhoodPhotos } from '../data/childhood';
 import { receiptPhotos } from '../data/roasts';
+import { friendMessages, photoPairs } from '../data/messages';
 
 const pad: CSSProperties = {
   padding: '28px 24px',
@@ -178,23 +179,61 @@ export function PageBody({
     );
   }
 
-  if (slot.type === 'messages-left') {
+  if (slot.type === 'friend-message') {
+    const f = friendMessages[slot.person];
+    const showTitle = slot.person === 0;
     return (
-      <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div style={{ font: "700 26px 'DM Serif Display', serif", color: '#3C2415', marginBottom: 10 }}>Messages</div>
-        <div style={{ width: 70, height: 1, background: 'linear-gradient(90deg,transparent,rgba(139,105,20,.2),transparent)', marginBottom: 20 }} />
-        <div style={{ font: "18px 'Caveat', cursive", color: 'rgba(90,62,40,.4)', maxWidth: 200 }}>
-          Letters from friends are coming soon — check back on this page.
+      <div style={{ ...pad, display: 'flex', flexDirection: 'column' }}>
+        {showTitle && <div style={{ flexShrink: 0, marginBottom: -6 }}>{pageTitle('Messages', 'from the people who love you')}</div>}
+        <div style={{ textAlign: 'center', marginBottom: 10, flexShrink: 0 }}>
+          <div style={{ font: "700 22px 'DM Serif Display', serif", color: '#3C2415' }}>{f.name}</div>
+          <div style={{ width: 50, height: 1, background: 'linear-gradient(90deg,transparent,rgba(139,105,20,.2),transparent)', margin: '6px auto 0' }} />
+        </div>
+        <div
+          style={{
+            flex: 1,
+            minHeight: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 10,
+            overflowY: 'auto',
+          }}
+        >
+          {f.lines.map((line, i) => (
+            <div key={i} style={{ font: "17px/1.5 'Caveat', cursive", color: '#5A3E28' }}>
+              {line}
+            </div>
+          ))}
+        </div>
+        <div style={{ alignSelf: 'flex-end', flexShrink: 0, marginTop: 10, font: "22px 'Caveat', cursive", color: '#8B6914', transform: 'rotate(-3deg)' }}>
+          — {f.name} ♡
         </div>
       </div>
     );
   }
 
-  if (slot.type === 'messages-right') {
+  if (slot.type === 'friend-photos') {
+    const f = friendMessages[slot.person];
+    const cols = f.photos.length > 1 ? 2 : 1;
     return (
-      <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div style={{ fontSize: 32, marginBottom: 12 }}>✍️</div>
-        <div style={{ font: "16px 'Caveat', cursive", color: 'rgba(90,62,40,.4)', maxWidth: 200 }}>This page is being written.</div>
+      <div style={{ ...pad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ ...gridStyle(cols), maxWidth: cols === 1 ? 190 : '100%' }}>
+          {f.photos.map((src, i) => (
+            <Polaroid key={i} src={src} caption={f.name} rotate={tiltFor(i)} onClick={() => onPhoto(src, f.name)} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (slot.type === 'photo-pair') {
+    const [a, b] = photoPairs[slot.pair];
+    return (
+      <div style={{ ...pad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={gridStyle(2)}>
+          <Polaroid src={a.src} caption={a.name} rotate={-3} onClick={() => onPhoto(a.src, a.name)} />
+          <Polaroid src={b.src} caption={b.name} rotate={3} onClick={() => onPhoto(b.src, b.name)} />
+        </div>
       </div>
     );
   }
