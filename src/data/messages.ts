@@ -64,6 +64,11 @@ export const friendMessages: FriendMessage[] = [
     ],
     photos: [shristi],
   },
+  {
+    name: 'Seem',
+    lines: ['If this was the most thrilling thing you have done...wait for so many more to come!! ;)', 'To the start of something!!'],
+    photos: [seem],
+  },
 ];
 
 export interface PhotoOnlyFriend {
@@ -76,12 +81,10 @@ export const photoOnlyFriends: PhotoOnlyFriend[] = [
   { name: 'Harnoor', src: harnoor },
   { name: 'Shreya', src: shreya },
   { name: 'Param', src: param },
-  { name: 'Seem', src: seem },
   { name: 'Naman', src: naman },
 ];
 
 export const photoPairs: PhotoOnlyFriend[][] = [
   [photoOnlyFriends[0], photoOnlyFriends[1]],
   [photoOnlyFriends[2], photoOnlyFriends[3]],
-  [photoOnlyFriends[4]],
 ];

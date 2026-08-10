@@ -267,16 +267,23 @@ export function PageBody({
     );
   }
 
-  // slot.type === 'final'
+  if (slot.type === 'final-left') {
+    return (
+      <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+        <div style={{ font: "700 14px 'Playfair Display', serif", color: '#C9A63A', letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16 }}>
+          Happy Birthday
+        </div>
+        <div style={{ font: "700 52px 'DM Serif Display', serif", color: '#3C2415' }}>Paste!!!</div>
+        <div style={{ width: 100, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)', marginTop: 24 }} />
+      </div>
+    );
+  }
+
+  // slot.type === 'final-right'
   return (
     <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-      <div style={{ font: "700 14px 'Playfair Display', serif", color: '#C9A63A', letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16 }}>
-        Happy Birthday
-      </div>
-      <div style={{ font: "700 44px 'DM Serif Display', serif", color: '#3C2415' }}>Paste!!!</div>
-      <div style={{ width: 90, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)', margin: '20px 0' }} />
-      <div style={{ fontSize: 32, marginBottom: 12 }}>🎉</div>
-      <div style={{ font: "26px 'Caveat', cursive", color: '#5A3E28' }}>Have a good one!!!</div>
+      <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
+      <div style={{ font: "32px 'Caveat', cursive", color: '#5A3E28' }}>Have a good one!!!</div>
     </div>
   );
 }
