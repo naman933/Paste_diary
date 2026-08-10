@@ -3,10 +3,10 @@ import type { Phase, FlipDirection } from '../types';
 import { pages } from '../data/pages';
 import { PageBody } from './PageContent';
 
-const BW = 1092;
-const BH = 780;
-const PW = 520;
-const SPINE = 52;
+const BW = 546;
+const BH = 390;
+const PW = 260;
+const SPINE = 26;
 const CLOSED_OFFSET_X = -100;
 
 // The closed book only shows the cover (the right half of the container), so its
