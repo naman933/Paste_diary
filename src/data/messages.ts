@@ -30,8 +30,8 @@ export const friendMessages: FriendMessage[] = [
   {
     name: 'Disha',
     lines: [
-      'Still left to learn - How the world looks like from so high up above!',
-      'You dropping in sweet wishes and appreciation texts for the smollest achievements!',
+      'Still left to learn - how the world looks like from so high up above!',
+      'One thing I will always cherish will be you dropping in sweet wishes and appreciation texts for my smollest achievements!',
     ],
     photos: [disha],
   },
@@ -55,6 +55,15 @@ export const friendMessages: FriendMessage[] = [
     lines: ['Is pe ruk jaaio ab'],
     photos: [tanuj],
   },
+  {
+    name: 'Shristi',
+    lines: [
+      'Hey Paste',
+      'You are one of the sweetest people in our group, we bonded over our pune stories and IM assignments 😂😂',
+      'Hope you get the PPO and don’t you dare forget to give me a referral later ❤️❤️😌😌',
+    ],
+    photos: [shristi],
+  },
 ];
 
 export interface PhotoOnlyFriend {
@@ -69,11 +78,10 @@ export const photoOnlyFriends: PhotoOnlyFriend[] = [
   { name: 'Param', src: param },
   { name: 'Seem', src: seem },
   { name: 'Shreya', src: shreya },
-  { name: 'Shristi', src: shristi },
 ];
 
 export const photoPairs: PhotoOnlyFriend[][] = [
   [photoOnlyFriends[0], photoOnlyFriends[1]],
   [photoOnlyFriends[2], photoOnlyFriends[3]],
-  [photoOnlyFriends[4], photoOnlyFriends[5]],
+  [photoOnlyFriends[4]],
 ];

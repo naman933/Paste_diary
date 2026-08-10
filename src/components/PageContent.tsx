@@ -256,9 +256,9 @@ export function PageBody({
     const group = photoPairs[slot.pair];
     return (
       <div style={{ ...pad, padding: '28px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 16, width: '100%' }}>
           {group.map((f, i) => (
-            <div key={i} style={{ flex: 1, minWidth: 0 }}>
+            <div key={i} style={{ flex: group.length === 1 ? '0 1 46%' : 1, minWidth: 0 }}>
               <Polaroid src={f.src} caption={f.name} rotate={tiltFor(i)} aspect="3 / 4" onClick={() => onPhoto(f.src, f.name)} />
             </div>
           ))}
