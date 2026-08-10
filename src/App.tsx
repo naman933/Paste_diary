@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { DeskScene } from './scenes/DeskScene';
 import { DeskItems } from './components/DeskItems';
-import { DiaryBook } from './components/DiaryBook';
+import { DiaryBook, closedDiaryCenterX, closedDiaryBottomY, openZoomScale } from './components/DiaryBook';
 import { Navigation } from './components/Navigation';
 import { Modal } from './components/Modal';
 import { pages } from './data/pages';
@@ -80,7 +80,7 @@ export default function App() {
           transformOrigin: '50% 48%',
           transition: 'transform 1.2s cubic-bezier(.4,0,.2,1)',
           willChange: 'transform',
-          transform: isZoomed ? 'scale(1.8)' : 'scale(1)',
+          transform: isZoomed ? `scale(${openZoomScale})` : 'scale(1)',
         }}
       >
         <DeskScene parallax={phase === 'desk'}>
@@ -123,8 +123,8 @@ export default function App() {
         <div
           style={{
             position: 'absolute',
-            top: '73%',
-            left: '50%',
+            top: `calc(48% + ${closedDiaryBottomY + 20}px)`,
+            left: `calc(50% + ${closedDiaryCenterX}px)`,
             transform: 'translate(-50%, -50%)',
             zIndex: 15,
             cursor: 'pointer',

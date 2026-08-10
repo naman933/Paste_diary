@@ -107,8 +107,8 @@ export function DeskItems({ onCamera, onCake, onSticky, onPolaroid }: DeskItemsP
 
       {/* Scattered Polaroids */}
       {[
-        { bottom: '10%', left: '3%', width: 264, height: 316, rotate: 12, z: 2 },
-        { bottom: '12%', left: '20%', width: 240, height: 288, rotate: -5, z: 1 },
+        { bottom: '10%', left: '3%', width: 132, height: 158, rotate: 12, z: 2 },
+        { bottom: '12%', left: '20%', width: 120, height: 144, rotate: -5, z: 1 },
       ].map((p, i) => (
         <div
           key={i}
@@ -140,13 +140,13 @@ export function DeskItems({ onCamera, onCake, onSticky, onPolaroid }: DeskItemsP
           position: 'absolute',
           top: '28%',
           right: '6%',
-          width: 300,
-          height: 270,
+          width: 150,
+          height: 135,
           background: 'linear-gradient(145deg,#FFEAA7,#F9D96C)',
           transform: 'rotate(2deg)',
           boxShadow: '2px 3px 10px rgba(0,0,0,.25)',
-          padding: 30,
-          font: "32px 'Caveat', cursive",
+          padding: 15,
+          font: "16px 'Caveat', cursive",
           color: '#5A4620',
           lineHeight: 1.3,
           cursor: 'pointer',
@@ -166,13 +166,13 @@ export function DeskItems({ onCamera, onCake, onSticky, onPolaroid }: DeskItemsP
           position: 'absolute',
           top: '38%',
           right: '4%',
-          width: 240,
-          height: 204,
+          width: 120,
+          height: 102,
           background: 'linear-gradient(145deg,#FFB3B3,#FF9B9B)',
           transform: 'rotate(-4deg)',
           boxShadow: '1px 2px 6px rgba(0,0,0,.2)',
-          padding: 21,
-          font: "26px 'Caveat', cursive",
+          padding: 11,
+          font: "13px 'Caveat', cursive",
           color: '#7A2020',
           lineHeight: 1.3,
         }}

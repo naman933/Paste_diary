@@ -3,10 +3,22 @@ import type { Phase, FlipDirection } from '../types';
 import { pages } from '../data/pages';
 import { PageBody } from './PageContent';
 
-const BW = 546;
-const BH = 390;
-const PW = 260;
-const SPINE = 26;
+const BW = 1092;
+const BH = 780;
+const PW = 520;
+const SPINE = 52;
+const CLOSED_OFFSET_X = -100;
+
+// The closed book only shows the cover (the right half of the container), so its
+// visible center sits away from the container's own center by half the cover width.
+// Exported so the desk CTA can align itself precisely under the closed diary.
+export const closedDiaryCenterX = CLOSED_OFFSET_X + (PW + SPINE / 2) / 2;
+export const closedDiaryBottomY = BH / 2;
+
+// The desk's "open" zoom scales the whole scene, including the diary itself.
+// Scale by however much keeps the open book at its original, comfortably-readable
+// effective height (the 390px book at the old 1.8x zoom) regardless of BH here.
+export const openZoomScale = (390 * 1.8) / BH;
 
 interface DiaryBookProps {
   phase: Phase;
@@ -36,7 +48,7 @@ export function DiaryBook({
   onPageFlipEnd,
 }: DiaryBookProps) {
   const coverFlipped = phase === 'opening' || phase === 'open';
-  const offset = coverFlipped ? 0 : -100;
+  const offset = coverFlipped ? 0 : CLOSED_OFFSET_X;
   const spread = pages[currentSpread];
 
   const renderLeft = (s = spread) => <PageBody slot={s.left} onPhoto={onPhoto} />;
