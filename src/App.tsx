@@ -123,7 +123,7 @@ export default function App() {
         <div
           style={{
             position: 'absolute',
-            top: '78%',
+            top: '73%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             zIndex: 15,

@@ -107,8 +107,8 @@ export function DeskItems({ onCamera, onCake, onSticky, onPolaroid }: DeskItemsP
 
       {/* Scattered Polaroids */}
       {[
-        { bottom: '10%', left: '3%', width: 264, height: 316, rotate: 12, z: 2 },
-        { bottom: '12%', left: '20%', width: 240, height: 288, rotate: -5, z: 1 },
+        { bottom: '-8%', left: '-10%', width: 528, height: 632, rotate: 12, z: 2 },
+        { bottom: '-6%', left: '4%', width: 480, height: 576, rotate: -5, z: 1 },
       ].map((p, i) => (
         <div
           key={i}

@@ -96,13 +96,6 @@ const childhoodRanges = [
   [13, 17],
 ];
 
-// 7 receipt photos across 3 pages (4th slot on the roast spread is blank).
-const roastRanges = [
-  [0, 3],
-  [3, 5],
-  [5, 7],
-];
-
 export function PageBody({
   slot,
   onPhoto,
@@ -163,14 +156,35 @@ export function PageBody({
     );
   }
 
-  if (slot.type === 'roast') {
-    const [start, end] = roastRanges[slot.part];
-    const photos = receiptPhotos.slice(start, end);
-    const hasTitle = slot.part === 0;
+  if (slot.type === 'roast' && slot.part === 0) {
+    const photos = receiptPhotos.slice(0, 3);
     return (
       <div style={pad}>
-        {hasTitle && pageTitle('The Roast Page', 'the actual comment section, unedited')}
-        <div style={{ ...gridStyle(hasTitle ? 3 : 2), height: hasTitle ? 'calc(100% - 110px)' : '100%' }}>
+        {pageTitle('The Roast Page', 'the actual comment section, unedited')}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, height: 'calc(100% - 110px)' }}>
+          <div style={{ display: 'flex', gap: 14 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <ReceiptCard photo={photos[0]} rotate={tiltFor(0)} onClick={() => onPhoto(photos[0].src, `@${photos[0].from}: "${photos[0].quote}"`)} />
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <ReceiptCard photo={photos[1]} rotate={tiltFor(1)} onClick={() => onPhoto(photos[1].src, `@${photos[1].from}: "${photos[1].quote}"`)} />
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ width: 'calc(50% - 7px)' }}>
+              <ReceiptCard photo={photos[2]} rotate={tiltFor(2)} onClick={() => onPhoto(photos[2].src, `@${photos[2].from}: "${photos[2].quote}"`)} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slot.type === 'roast') {
+    const photos = receiptPhotos.slice(3, 7);
+    return (
+      <div style={pad}>
+        <div style={{ ...gridStyle(2), height: '100%' }}>
           {photos.map((p, i) => (
             <ReceiptCard key={i} photo={p} rotate={tiltFor(i)} onClick={() => onPhoto(p.src, `@${p.from}: "${p.quote}"`)} />
           ))}
@@ -238,10 +252,23 @@ export function PageBody({
     );
   }
 
-  // blank filler page
+  if (slot.type === 'final-left') {
+    return (
+      <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+        <div style={{ font: "700 14px 'Playfair Display', serif", color: '#C9A63A', letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16 }}>
+          Happy Birthday
+        </div>
+        <div style={{ font: "700 52px 'DM Serif Display', serif", color: '#3C2415' }}>Paste!!!</div>
+        <div style={{ width: 100, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)', marginTop: 24 }} />
+      </div>
+    );
+  }
+
+  // slot.type === 'final-right'
   return (
-    <div style={{ ...pad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: 60, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)' }} />
+    <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+      <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
+      <div style={{ font: "32px 'Caveat', cursive", color: '#5A3E28' }}>Have a good one!!!</div>
     </div>
   );
 }
