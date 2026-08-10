@@ -5,5 +5,5 @@ export type ModalState =
   | { type: 'photo'; src: string; caption: string }
   | null;
 
-export type Phase = 'desk' | 'opening' | 'open';
+export type Phase = 'dark' | 'lit' | 'opening' | 'open';
 export type FlipDirection = 'next' | 'prev' | null;
