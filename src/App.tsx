@@ -123,42 +123,27 @@ export default function App() {
         <div
           style={{
             position: 'absolute',
-            bottom: '5%',
+            top: '78%',
             left: '50%',
-            transform: 'translateX(-50%)',
+            transform: 'translate(-50%, -50%)',
             zIndex: 15,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-            padding: '10px 24px',
-            background: 'rgba(0,0,0,.5)',
-            borderRadius: 28,
-            backdropFilter: 'blur(6px)',
-            border: '1px solid rgba(196,166,122,.2)',
-            animation: 'float-y 2s ease-in-out infinite',
             cursor: 'pointer',
+            animation: 'pulse-fade 3.5s ease-in-out infinite',
           }}
           onClick={(e) => {
             e.stopPropagation();
             openDiary();
           }}
         >
-          <div
+          <span
             style={{
-              width: 24,
-              height: 24,
-              border: '1.5px solid rgba(255,255,255,.6)',
-              borderRadius: 5,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              font: '10px system-ui',
-              color: 'rgba(255,255,255,.6)',
+              font: "13px 'Playfair Display', serif",
+              color: 'rgba(255,255,255,.55)',
+              letterSpacing: 2,
+              textShadow: '0 2px 10px rgba(0,0,0,.7)',
+              whiteSpace: 'nowrap',
             }}
           >
-            ⎵
-          </div>
-          <span style={{ font: "13px 'Playfair Display', serif", color: 'rgba(255,255,255,.85)', letterSpacing: 1 }}>
             Press Space or Click to Open
           </span>
         </div>

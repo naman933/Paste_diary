@@ -157,10 +157,9 @@ export function DeskItems({ onCamera, onCake, onSticky, onPolaroid }: DeskItemsP
           onSticky();
         }}
       >
-        Open this on
+        We all love
         <br />
-        your birthday
-        <br />— love, the squad
+        you Paste!!!
       </div>
       <div
         style={{

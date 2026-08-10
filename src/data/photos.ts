@@ -24,6 +24,8 @@ import receipt05 from '../assets/photos/roast/receipt-05.png';
 import receipt06 from '../assets/photos/roast/receipt-06.png';
 import receipt07 from '../assets/photos/roast/receipt-07.jpg';
 
+import groupPhoto from '../assets/photos/group-photo.jpeg';
+
 export const photos = {
   baby,
   toddlerCostume,
@@ -52,3 +54,5 @@ export const deskPolaroids = [
 ];
 
 export const cameraEasterEggPhoto = photos.trainingRifle;
+
+export { groupPhoto };

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ModalState } from '../types';
-import { cameraEasterEggPhoto } from '../data/photos';
+import { cameraEasterEggPhoto, groupPhoto } from '../data/photos';
 
 const card = {
   background: '#FDF8EE',
@@ -86,17 +86,21 @@ function ModalBody({ modal }: { modal: NonNullable<ModalState> }) {
         style={{
           background: 'linear-gradient(145deg,#FFEAA7,#F9D96C)',
           borderRadius: 4,
-          padding: 28,
-          maxWidth: 280,
+          padding: 16,
+          maxWidth: 340,
           cursor: 'default',
           boxShadow: '0 20px 60px rgba(0,0,0,.3)',
           transform: 'rotate(-2deg)',
         }}
         onClick={stop}
       >
-        <div style={{ font: "700 20px 'Caveat', cursive", color: '#8B6914', marginBottom: 8 }}>A note from the squad:</div>
-        <div style={{ font: "18px/1.6 'Caveat', cursive", color: '#5A4620', whiteSpace: 'pre-wrap' }}>
-          {"We planned this for weeks. Everyone wrote something. Some of us cried writing it (looking at you, Taylor).\n\nYou're stuck with us forever. Deal with it. ❤️"}
+        <img
+          src={groupPhoto}
+          alt="the whole squad"
+          style={{ width: '100%', maxHeight: '60vh', objectFit: 'cover', display: 'block', borderRadius: 3, boxShadow: '0 4px 16px rgba(0,0,0,.2)' }}
+        />
+        <div style={{ font: "700 24px 'Caveat', cursive", color: '#8B6914', textAlign: 'center', marginTop: 14 }}>
+          We all love you Paste!!! ❤️
         </div>
       </div>
     );
