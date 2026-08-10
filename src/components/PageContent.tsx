@@ -33,7 +33,19 @@ function gridStyle(columns: number): CSSProperties {
   };
 }
 
-function Polaroid({ src, caption, rotate, onClick }: { src: string; caption: string; rotate: number; onClick: () => void }) {
+function Polaroid({
+  src,
+  caption,
+  rotate,
+  onClick,
+  aspect = '1 / 1.1',
+}: {
+  src: string;
+  caption: string;
+  rotate: number;
+  onClick: () => void;
+  aspect?: string;
+}) {
   return (
     <div style={{ minWidth: 0, transform: `rotate(${rotate}deg)`, cursor: 'pointer' }} onClick={onClick}>
       <div
@@ -45,7 +57,7 @@ function Polaroid({ src, caption, rotate, onClick }: { src: string; caption: str
           position: 'relative',
         }}
       >
-        <img src={src} alt={caption} style={{ width: '100%', aspectRatio: '1 / 1.1', objectFit: 'cover', display: 'block' }} />
+        <img src={src} alt={caption} style={{ width: '100%', aspectRatio: aspect, objectFit: 'cover', display: 'block' }} />
         <div
           style={{
             position: 'absolute',
@@ -243,33 +255,28 @@ export function PageBody({
   if (slot.type === 'photo-pair') {
     const group = photoPairs[slot.pair];
     return (
-      <div style={{ ...pad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={gridStyle(2)}>
+      <div style={{ ...pad, padding: '28px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: 16, width: '100%' }}>
           {group.map((f, i) => (
-            <Polaroid key={i} src={f.src} caption={f.name} rotate={tiltFor(i)} onClick={() => onPhoto(f.src, f.name)} />
+            <div key={i} style={{ flex: 1, minWidth: 0 }}>
+              <Polaroid src={f.src} caption={f.name} rotate={tiltFor(i)} aspect="3 / 4" onClick={() => onPhoto(f.src, f.name)} />
+            </div>
           ))}
         </div>
       </div>
     );
   }
 
-  if (slot.type === 'final-left') {
-    return (
-      <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div style={{ font: "700 14px 'Playfair Display', serif", color: '#C9A63A', letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16 }}>
-          Happy Birthday
-        </div>
-        <div style={{ font: "700 52px 'DM Serif Display', serif", color: '#3C2415' }}>Paste!!!</div>
-        <div style={{ width: 100, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)', marginTop: 24 }} />
-      </div>
-    );
-  }
-
-  // slot.type === 'final-right'
+  // slot.type === 'final'
   return (
     <div style={{ ...pad, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-      <div style={{ fontSize: 40, marginBottom: 16 }}>🎉</div>
-      <div style={{ font: "32px 'Caveat', cursive", color: '#5A3E28' }}>Have a good one!!!</div>
+      <div style={{ font: "700 14px 'Playfair Display', serif", color: '#C9A63A', letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16 }}>
+        Happy Birthday
+      </div>
+      <div style={{ font: "700 44px 'DM Serif Display', serif", color: '#3C2415' }}>Paste!!!</div>
+      <div style={{ width: 90, height: 1, background: 'linear-gradient(90deg,transparent,#C9A63A,transparent)', margin: '20px 0' }} />
+      <div style={{ fontSize: 32, marginBottom: 12 }}>🎉</div>
+      <div style={{ font: "26px 'Caveat', cursive", color: '#5A3E28' }}>Have a good one!!!</div>
     </div>
   );
 }

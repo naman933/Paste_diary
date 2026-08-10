@@ -73,6 +73,7 @@ export const photoOnlyFriends: PhotoOnlyFriend[] = [
 ];
 
 export const photoPairs: PhotoOnlyFriend[][] = [
-  [photoOnlyFriends[0], photoOnlyFriends[1], photoOnlyFriends[2]],
-  [photoOnlyFriends[3], photoOnlyFriends[4], photoOnlyFriends[5]],
+  [photoOnlyFriends[0], photoOnlyFriends[1]],
+  [photoOnlyFriends[2], photoOnlyFriends[3]],
+  [photoOnlyFriends[4], photoOnlyFriends[5]],
 ];
