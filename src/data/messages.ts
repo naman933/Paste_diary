@@ -8,6 +8,7 @@ import param from '../assets/photos/messages/param.jpeg';
 import seem from '../assets/photos/messages/seem.jpeg';
 import shreya from '../assets/photos/messages/shreya.jpeg';
 import shristi from '../assets/photos/messages/shristi.jpeg';
+import tanish from '../assets/photos/messages/tanish.jpeg';
 import tanuj from '../assets/photos/messages/tanuj.jpeg';
 
 export interface FriendMessage {
@@ -47,7 +48,7 @@ export const friendMessages: FriendMessage[] = [
   {
     name: 'Tanish',
     lines: ['I had better hopes from you, you were my role model'],
-    photos: [],
+    photos: [tanish],
   },
   {
     name: 'Tanuj',
@@ -71,8 +72,7 @@ export const photoOnlyFriends: PhotoOnlyFriend[] = [
   { name: 'Shristi', src: shristi },
 ];
 
-export const photoPairs: [PhotoOnlyFriend, PhotoOnlyFriend][] = [
-  [photoOnlyFriends[0], photoOnlyFriends[1]],
-  [photoOnlyFriends[2], photoOnlyFriends[3]],
-  [photoOnlyFriends[4], photoOnlyFriends[5]],
+export const photoPairs: PhotoOnlyFriend[][] = [
+  [photoOnlyFriends[0], photoOnlyFriends[1], photoOnlyFriends[2]],
+  [photoOnlyFriends[3], photoOnlyFriends[4], photoOnlyFriends[5]],
 ];

@@ -241,12 +241,13 @@ export function PageBody({
   }
 
   if (slot.type === 'photo-pair') {
-    const [a, b] = photoPairs[slot.pair];
+    const group = photoPairs[slot.pair];
     return (
       <div style={{ ...pad, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={gridStyle(2)}>
-          <Polaroid src={a.src} caption={a.name} rotate={-3} onClick={() => onPhoto(a.src, a.name)} />
-          <Polaroid src={b.src} caption={b.name} rotate={3} onClick={() => onPhoto(b.src, b.name)} />
+          {group.map((f, i) => (
+            <Polaroid key={i} src={f.src} caption={f.name} rotate={tiltFor(i)} onClick={() => onPhoto(f.src, f.name)} />
+          ))}
         </div>
       </div>
     );
