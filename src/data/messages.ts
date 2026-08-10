@@ -74,10 +74,10 @@ export interface PhotoOnlyFriend {
 // Friends with a photo but no written message — paired up two per page.
 export const photoOnlyFriends: PhotoOnlyFriend[] = [
   { name: 'Harnoor', src: harnoor },
-  { name: 'Naman', src: naman },
+  { name: 'Shreya', src: shreya },
   { name: 'Param', src: param },
   { name: 'Seem', src: seem },
-  { name: 'Shreya', src: shreya },
+  { name: 'Naman', src: naman },
 ];
 
 export const photoPairs: PhotoOnlyFriend[][] = [
